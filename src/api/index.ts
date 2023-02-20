@@ -1,8 +1,10 @@
 import request from '../utils/request';
 
-export const fetchData = () => {
+export const fetchData = (fileName: string) => {
+    const url = './'+fileName+'.json';
+    console.log(url);
     return request({
-        url: './table.json',
+        url,
         method: 'get'
     });
 };
