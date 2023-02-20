@@ -150,6 +150,12 @@ const items = [
         title: '支持作者',
         permiss: '14',
     },
+    {
+        icon: 'share',
+        index: '/d3Sugiyama',
+        title: '流程图',
+        permiss: '14',
+    },
 ];
 
 const route = useRoute();

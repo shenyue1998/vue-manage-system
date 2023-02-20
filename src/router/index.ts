@@ -137,6 +137,15 @@ const routes: RouteRecordRaw[] = [
                 },
                 component: () => import(/* webpackChunkName: "import" */ '../views/import.vue'),
             },
+            {
+                path: '/d3Sugiyama',
+                name: 'd3Sugiyama',
+                meta: {
+                    title: '流程图',
+                    permiss: '14',
+                },
+                component: () => import(/* webpackChunkName: "d3LineChart" */ '../views/d3Sugiyama.vue'),
+            },
         ],
     },
     {

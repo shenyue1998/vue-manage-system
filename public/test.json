@@ -1,0 +1,157 @@
+{
+  "test01": [
+    {
+      "id": "0",
+      "parentIds": [],
+      "type": "a"
+    },
+    {
+      "id": "1",
+      "parentIds": [],
+      "type": "a"
+    },
+    {
+      "id": "2",
+      "parentIds": [],
+      "type": "b"
+    },
+    {
+      "id": "3",
+      "parentIds": [],
+      "type": "c"
+    },
+    {
+      "id": "4",
+      "parentIds": [],
+      "type": "d"
+    },
+    {
+      "id": "5",
+      "parentIds": [
+        "0",
+        "1",
+        "2"
+      ],
+      "type": "b"
+    },
+    {
+      "id": "6",
+      "parentIds": [
+        "3"
+      ],
+      "type": "a"
+    },
+    {
+      "id": "7",
+      "parentIds": [
+        "4"
+      ],
+      "type": "b"
+    },
+    {
+      "id": "8",
+      "parentIds": [
+        "4"
+      ],
+      "type": "d"
+    },
+    {
+      "id": "9",
+      "parentIds": [
+        "5",
+        "6",
+        "0"
+      ],
+      "type": "c"
+    },
+    {
+      "id": "10",
+      "parentIds": [
+        "6"
+      ],
+      "type": "d"
+    },
+    {
+      "id": "11",
+      "parentIds": [
+        "6",
+        "7"
+      ],
+      "type": "b"
+    },
+    {
+      "id": "12",
+      "parentIds": [
+        "7"
+      ],
+      "type": "d"
+    },
+    {
+      "id": "13",
+      "parentIds": [
+        "1",
+        "0"
+      ],
+      "type": "d"
+    },
+    {
+      "id": "14",
+      "parentIds": [
+        "5",
+        "10",
+        "12"
+      ],
+      "type": "b"
+    },
+    {
+      "id": "15",
+      "parentIds": [
+        "11"
+      ],
+      "type": "a"
+    },
+    {
+      "id": "16",
+      "parentIds": [
+        "11",
+        "12"
+      ],
+      "type": "c"
+    }
+  ],
+  "test02": [{
+    "id": "a.1",
+    "parentIds": [],
+    "type": "a"
+  },
+  {
+    "id": "a.2",
+    "parentIds": [],
+    "type": "a"
+  },
+  {
+    "id": "b.1",
+    "parentIds": ["a.1"],
+    "type": "b"
+  },
+  {
+    "id": "b.2",
+    "parentIds": ["a.1","a.2"],
+    "type": "b"
+  },
+  {
+    "id": "b.3",
+    "parentIds": ["a.2"],
+    "type": "b"
+  },
+  {
+    "id": "c.1",
+    "parentIds": ["b.1","b.3"],
+    "type": "c"
+  },
+  {
+    "id": "d.1",
+    "parentIds": ["c.1"],
+    "type": "d"
+  }]
+}
