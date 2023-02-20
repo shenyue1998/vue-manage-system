@@ -16,6 +16,7 @@ import * as d3 from 'd3';
 import * as d3Dag from 'd3-dag';
 import { ref } from 'vue';
 import { fetchData } from '../api/index';
+import { customLayout } from '../utils/layout';
 
 (async () => {
     const data = await fetchData('test').then(res => {
@@ -28,16 +29,19 @@ import { fetchData } from '../api/index';
         ["c", "#92D050"],
         ["d", "#00B0F0"]
     ]);
-    const nodeRadius = 35;
+    const nodeRadius = 30;
 
     //左边流程图
-    const left_dag = d3.dagStratify()(data.test01);
-    //const nodeRadius = 20;
+    const left_dag = d3.dagStratify()(data.scm_test);
+
+    //深度优先的类树状结构
+    console.log(left_dag);
     const left_layout = d3
         .sugiyama() // base layout
+        .layering(customLayout())
         .decross(d3.decrossOpt()) // minimize number of crossings
-        .nodeSize((node) => [(node ? 3.6 : 0.25) * nodeRadius, 3 * nodeRadius]);
-    
+        .nodeSize((node) => [(node ? 5 : 0.25) * nodeRadius, 5 * nodeRadius]);
+
     // set node size instead of constraining to fit
     const left_width = left_layout(left_dag).width;
     const left_height = left_layout(left_dag).height;
@@ -106,20 +110,20 @@ import { fetchData } from '../api/index';
     // Add text to nodes
     left_nodes
         .append("text")
-        .text((d) => d.data.id)
-        .attr("font-weight", "bold")
+        .text((d) => d.data.name)
+        .attr("font-weight", "normal")
         .attr("font-family", "sans-serif")
         .attr("text-anchor", "middle")
         .attr("alignment-baseline", "middle")
-        .attr("fill", "white");
+        .attr("fill", "#767171")
+        .attr("transform","translate(0,40)");
 
     //右边流程图
     const right_dag = d3.dagStratify()(data.test02);
-    //const nodeRadius = 20;
     const right_layout = d3
         .sugiyama() // base layout
         .decross(d3.decrossOpt()) // minimize number of crossings
-        .nodeSize((node) => [(node ? 3.6 : 0.25) * nodeRadius, 3 * nodeRadius]); // set node size instead of constraining to fit
+        .nodeSize((node) => [(node ? 8 : 0.25) * nodeRadius, 8 * nodeRadius]); // set node size instead of constraining to fit
     const right_width = right_layout(right_dag).width;
     const right_height = right_layout(right_dag).height;
     // --------------------------------
@@ -128,13 +132,6 @@ import { fetchData } from '../api/index';
     const rightSvgSelection = d3.select("#svg02");
     rightSvgSelection.attr("viewBox", [0, 0, right_width, right_height].join(" "));
     const right_defs = rightSvgSelection.append("defs"); // For gradients
-
-    // // How to draw edges
-    // const line = d3
-    //     .line()
-    //     .curve(d3.curveCatmullRom)
-    //     .x((d) => d.x)
-    //     .y((d) => d.y);
 
     // Plot edges
     rightSvgSelection
@@ -187,11 +184,12 @@ import { fetchData } from '../api/index';
     right_nodes
         .append("text")
         .text((d) => d.data.id)
-        .attr("font-weight", "bold")
+        .attr("font-weight", "normal")
         .attr("font-family", "sans-serif")
         .attr("text-anchor", "middle")
         .attr("alignment-baseline", "middle")
-        .attr("fill", "white");
+        .attr("fill", "#767171")
+        .attr("transform","translate(0,40)");
 
 })();
 

@@ -1,29 +1,188 @@
 {
+  "scm_test": [
+    {
+      "id": "0",
+      "name": "模型驱动",
+      "parentIds": [],
+      "type": "a",
+      "rank": "1"
+    },
+    {
+      "id": "1",
+      "name": "结构化设计",
+      "parentIds": [],
+      "type": "a",
+      "rank": "1"
+    },
+    {
+      "id": "2",
+      "name": "信息工程",
+      "parentIds": [],
+      "type": "b",
+      "rank": "1"
+    },
+    {
+      "id": "3",
+      "name": "原型设计",
+      "parentIds": [],
+      "type": "c",
+      "rank": "1"
+    },
+    {
+      "id": "4",
+      "name": "快速应用开发",
+      "parentIds": [],
+      "type": "d",
+      "rank": "1"
+    },
+    {
+      "id": "5",
+      "name": "CASE",
+      "parentIds": [
+        "0",
+        "1",
+        "2"
+      ],
+      "type": "b",
+      "rank": "2"
+    },
+    {
+      "id": "6",
+      "name": "原型法",
+      "parentIds": [
+        "3"
+      ],
+      "type": "a",
+      "rank": "2"
+    },
+    {
+      "id": "7",
+      "name": "面向对象",
+      "parentIds": [
+        "4"
+      ],
+      "type": "b",
+      "rank": "2"
+    },
+    {
+      "id": "8",
+      "name": "结构化",
+      "parentIds": [
+        "4"
+      ],
+      "type": "d",
+      "rank": "2"
+    },
+    {
+      "id": "9",
+      "name": "财务管理",
+      "parentIds": [
+        "5",
+        "6",
+        "0"
+      ],
+      "type": "c",
+      "rank": "3"
+    },
+    {
+      "id": "10",
+      "name": "配送管理",
+      "parentIds": [
+        "6"
+      ],
+      "type": "d",
+      "rank": "3"
+    },
+    {
+      "id": "11",
+      "name": "生产管理",
+      "parentIds": [
+        "6",
+        "7"
+      ],
+      "type": "b",
+      "rank": "3"
+    },
+    {
+      "id": "12",
+      "name": "调拨管理",
+      "parentIds": [
+        "7"
+      ],
+      "type": "d",
+      "rank": "3"
+    },
+    {
+      "id": "13",
+      "name": "saas",
+      "parentIds": [
+        "1",
+        "0"
+      ],
+      "type": "d",
+      "rank": "4"
+    },
+    {
+      "id": "14",
+      "name": "paas",
+      "parentIds": [
+        "5",
+        "10",
+        "12"
+      ],
+      "type": "b",
+      "rank": "4"
+    },
+    {
+      "id": "15",
+      "name": "iaas",
+      "parentIds": [
+        "11"
+      ],
+      "type": "a",
+      "rank": "4"
+    },
+    {
+      "id": "16",
+      "name": "基础服务",
+      "parentIds": [
+        "11",
+        "12"
+      ],
+      "type": "c",
+      "rank": "4"
+    }
+  ],
   "test01": [
     {
       "id": "0",
       "parentIds": [],
-      "type": "a"
+      "type": "a",
+      "rank": "1"
     },
     {
       "id": "1",
       "parentIds": [],
-      "type": "a"
+      "type": "a",
+      "rank": "1"
     },
     {
       "id": "2",
       "parentIds": [],
-      "type": "b"
+      "type": "b",
+      "rank": "1"
     },
     {
       "id": "3",
       "parentIds": [],
-      "type": "c"
+      "type": "c",
+      "rank": "1"
     },
     {
       "id": "4",
       "parentIds": [],
-      "type": "d"
+      "type": "d",
+      "rank": "1"
     },
     {
       "id": "5",
@@ -32,28 +191,32 @@
         "1",
         "2"
       ],
-      "type": "b"
+      "type": "b",
+      "rank": "2"
     },
     {
       "id": "6",
       "parentIds": [
         "3"
       ],
-      "type": "a"
+      "type": "a",
+      "rank": "2"
     },
     {
       "id": "7",
       "parentIds": [
         "4"
       ],
-      "type": "b"
+      "type": "b",
+      "rank": "2"
     },
     {
       "id": "8",
       "parentIds": [
         "4"
       ],
-      "type": "d"
+      "type": "d",
+      "rank": "2"
     },
     {
       "id": "9",
@@ -62,14 +225,16 @@
         "6",
         "0"
       ],
-      "type": "c"
+      "type": "c",
+      "rank": "3"
     },
     {
       "id": "10",
       "parentIds": [
         "6"
       ],
-      "type": "d"
+      "type": "d",
+      "rank": "3"
     },
     {
       "id": "11",
@@ -77,14 +242,16 @@
         "6",
         "7"
       ],
-      "type": "b"
+      "type": "b",
+      "rank": "3"
     },
     {
       "id": "12",
       "parentIds": [
         "7"
       ],
-      "type": "d"
+      "type": "d",
+      "rank": "3"
     },
     {
       "id": "13",
@@ -92,7 +259,8 @@
         "1",
         "0"
       ],
-      "type": "d"
+      "type": "d",
+      "rank": "4"
     },
     {
       "id": "14",
@@ -101,14 +269,16 @@
         "10",
         "12"
       ],
-      "type": "b"
+      "type": "b",
+      "rank": "4"
     },
     {
       "id": "15",
       "parentIds": [
         "11"
       ],
-      "type": "a"
+      "type": "a",
+      "rank": "4"
     },
     {
       "id": "16",
@@ -116,7 +286,8 @@
         "11",
         "12"
       ],
-      "type": "c"
+      "type": "c",
+      "rank": "4"
     }
   ],
   "test02": [{
