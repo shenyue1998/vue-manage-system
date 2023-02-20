@@ -1,5 +1,7 @@
 import { Dag, LayeringOperator, DagNode } from "d3-dag";
+// interface CustomNode{
 
+// }
 export type CustomOperator = LayeringOperator<unknown, unknown>;
 
 /**
@@ -13,7 +15,7 @@ export function customLayout(...args: never[]): CustomOperator {
     }
 
     function customLayoutCall(dag: Dag): void {
-        dag.descendants().forEach(node => {
+        dag.descendants().forEach((node:any )=> {
             node.value = Number(node.data.rank)-1;
         });
     }
