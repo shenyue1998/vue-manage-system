@@ -98,7 +98,7 @@ const handleTags = (command: string) => {
 <style>
 .tags {
 	position: relative;
-	height: 30px;
+	height: 32px;
 	overflow: hidden;
 	background: #fff;
 	padding-right: 120px;
@@ -117,10 +117,10 @@ const handleTags = (command: string) => {
 	float: left;
 	margin: 3px 5px 2px 3px;
 	border-radius: 3px;
-	font-size: 12px;
+	font-size: 13px;
 	overflow: hidden;
 	cursor: pointer;
-	height: 23px;
+	height: 25px;
 	border: 1px solid #e9eaec;
 	background: #fff;
 	padding: 0 5px 0 12px;
