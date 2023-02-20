@@ -13,8 +13,6 @@
 
 <script>
 import * as d3 from 'd3';
-import * as d3Dag from 'd3-dag';
-import { ref } from 'vue';
 import { fetchData } from '../api/index';
 import { customLayout } from '../utils/layout';
 
