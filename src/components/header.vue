@@ -6,6 +6,17 @@
 			<el-icon v-else><Fold /></el-icon>
 		</div>
 		<div class="logo">后台管理系统</div>
+		<div class="header-left">
+			<div class="header-user-meun">
+				<div class="h-6" />
+				<el-menu :default-active="activeIndex2" class="el-menu-demo" mode="horizontal" background-color="#242f42"
+					text-color="#bfcbd9" active-text-color="#20a0ff" @select="handleSelect">
+					<el-menu-item index="1">系统管理</el-menu-item>
+					<el-menu-item index="2">业务管理</el-menu-item>
+					<el-menu-item index="3">大屏</el-menu-item>
+				</el-menu>
+			</div>
+		</div>
 		<div class="header-right">
 			<div class="header-user-con">
 				<!-- 消息中心 -->
@@ -44,7 +55,7 @@
 	</div>
 </template>
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useSidebarStore } from '../store/sidebar';
 import { useRouter } from 'vue-router';
 import imgurl from '../assets/img/img.jpg';
@@ -52,6 +63,10 @@ import imgurl from '../assets/img/img.jpg';
 const username: string | null = localStorage.getItem('ms_username');
 const message: number = 2;
 
+const activeIndex2 = ref('1');
+const handleSelect = (key: string, keyPath: string[]) => {
+  console.log(key, keyPath)
+}
 const sidebar = useSidebarStore();
 // 侧边栏折叠
 const collapseChage = () => {
@@ -98,11 +113,21 @@ const handleCommand = (command: string) => {
 	width: 250px;
 	line-height: 70px;
 }
+.header-left {
+	float: left;
+	padding-right: 250px;
+	line-height: 70px;
+}
 .header-right {
 	float: right;
 	padding-right: 50px;
 }
 .header-user-con {
+	display: flex;
+	height: 70px;
+	align-items: center;
+}
+.header-top-meun {
 	display: flex;
 	height: 70px;
 	align-items: center;
