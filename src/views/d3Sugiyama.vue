@@ -13,6 +13,7 @@
 
 <script>
 import * as d3 from 'd3';
+import * as d3Dag from 'd3-dag';
 import { fetchData } from '../api/index';
 import { customLayout } from '../utils/layout';
 
@@ -30,14 +31,14 @@ import { customLayout } from '../utils/layout';
     const nodeRadius = 30;
 
     //左边流程图
-    const left_dag = d3.dagStratify()(data.scm_test);
+    const left_dag = d3Dag.dagStratify()(data.scm_test);
 
     //深度优先的类树状结构
     console.log(left_dag);
-    const left_layout = d3
+    const left_layout = d3Dag
         .sugiyama() // base layout
         .layering(customLayout())
-        .decross(d3.decrossOpt()) // minimize number of crossings
+        .decross(d3Dag.decrossOpt()) // minimize number of crossings
         .nodeSize((node) => [(node ? 5 : 0.25) * nodeRadius, 5 * nodeRadius]);
 
     // set node size instead of constraining to fit
@@ -117,10 +118,10 @@ import { customLayout } from '../utils/layout';
         .attr("transform","translate(0,40)");
 
     //右边流程图
-    const right_dag = d3.dagStratify()(data.test02);
-    const right_layout = d3
+    const right_dag = d3Dag.dagStratify()(data.test02);
+    const right_layout = d3Dag
         .sugiyama() // base layout
-        .decross(d3.decrossOpt()) // minimize number of crossings
+        .decross(d3Dag.decrossOpt()) // minimize number of crossings
         .nodeSize((node) => [(node ? 8 : 0.25) * nodeRadius, 8 * nodeRadius]); // set node size instead of constraining to fit
     const right_width = right_layout(right_dag).width;
     const right_height = right_layout(right_dag).height;
