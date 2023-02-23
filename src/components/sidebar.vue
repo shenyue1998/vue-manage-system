@@ -63,9 +63,21 @@ const items = [
         permiss: '1',
     },
     {
-        icon: 'Calendar',
+        icon: 'share',
+        index: '/d3Sugiyama',
+        title: '生产制造',
+        permiss: '14',
+    },
+    {
+        icon: 'present',
+        index: '/charts',
+        title: '经营管理',
+        permiss: '11',
+    },
+    {
+        icon: 'DocumentCopy',
         index: '1',
-        title: '表格相关',
+        title: '管理过程',
         permiss: '2',
         subs: [
             {
@@ -133,29 +145,17 @@ const items = [
         permiss: '10',
     },
     {
-        icon: 'PieChart',
-        index: '/charts',
-        title: 'schart图表',
-        permiss: '11',
-    },
-    {
         icon: 'Warning',
         index: '/permission',
         title: '权限管理',
         permiss: '13',
     },
-    {
-        icon: 'CoffeeCup',
-        index: '/donate',
-        title: '支持作者',
-        permiss: '14',
-    },
-    {
-        icon: 'share',
-        index: '/d3Sugiyama',
-        title: '流程图',
-        permiss: '14',
-    },
+    // {
+    //     icon: 'CoffeeCup',
+    //     index: '/donate',
+    //     title: '支持作者',
+    //     permiss: '14',
+    // }
 ];
 
 const route = useRoute();

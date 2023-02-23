@@ -2,18 +2,29 @@
 	<div class="header">
 		<!-- 折叠按钮 -->
 		<div class="collapse-btn" @click="collapseChage">
-			<el-icon v-if="sidebar.collapse"><Expand /></el-icon>
-			<el-icon v-else><Fold /></el-icon>
+			<el-icon v-if="sidebar.collapse">
+				<Expand />
+			</el-icon>
+			<el-icon v-else>
+				<Fold />
+			</el-icon>
 		</div>
-		<div class="logo">后台管理系统</div>
+		<div class="logo">制造业全流程数据管理系统</div>
 		<div class="header-left">
-			<div class="header-user-meun">
+			<div class="header-top-meun">
 				<div class="h-6" />
-				<el-menu :default-active="activeIndex2" class="el-menu-demo" mode="horizontal" background-color="#242f42"
-					text-color="#bfcbd9" active-text-color="#20a0ff" @select="handleSelect">
-					<el-menu-item index="1">系统管理</el-menu-item>
-					<el-menu-item index="2">业务管理</el-menu-item>
-					<el-menu-item index="3">大屏</el-menu-item>
+				<!-- 顶部一级菜单 -->
+				<el-menu :default-active="onRoutes" class="el-menu-demo" mode="horizontal" router
+					background-color="#242f42" text-color="#bfcbd9" active-text-color="#20a0ff">
+					<el-menu-item class="list-item" :index="item.index" v-for="item in items" :key="item.index">
+						<el-icon>
+							<component :is="item.icon"></component>
+						</el-icon>
+						<template #title>{{ item.title }}</template>
+					</el-menu-item>
+					<!-- <el-menu-item index="1">系统管理</el-menu-item> -->
+					<!-- <el-menu-item index="2">业务管理</el-menu-item> -->
+					<!-- <el-menu-item index="3">大屏</el-menu-item> -->
 				</el-menu>
 			</div>
 		</div>
@@ -21,11 +32,7 @@
 			<div class="header-user-con">
 				<!-- 消息中心 -->
 				<div class="btn-bell" @click="router.push('/tabs')">
-					<el-tooltip
-						effect="dark"
-						:content="message ? `有${message}条未读消息` : `消息中心`"
-						placement="bottom"
-					>
+					<el-tooltip effect="dark" :content="message ? `有${message}条未读消息` : `消息中心`" placement="bottom">
 						<i class="el-icon-lx-notice"></i>
 					</el-tooltip>
 					<span class="btn-bell-badge" v-if="message"></span>
@@ -55,18 +62,48 @@
 	</div>
 </template>
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, computed } from 'vue';
 import { useSidebarStore } from '../store/sidebar';
-import { useRouter } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
 import imgurl from '../assets/img/img.jpg';
+
+//顶部一级菜单
+const items = [
+	{
+		icon: 'Odometer',
+		index: '/dashboard',
+		title: '研发设计',
+		permiss: '1',
+	},
+	{
+		icon: 'share',
+		index: '/d3Sugiyama',
+		title: '生产制造',
+		permiss: '14',
+	
+	},
+	{
+		icon: 'present',
+		index: '/charts',
+		title: '经营管理',
+		permiss: '11',
+	},
+	{
+		icon: 'Setting',
+		index: '/icon',
+		title: '其他',
+		permiss: '10',
+	}
+]
+
+const route = useRoute();
+const onRoutes = computed(() => {
+	return route.path;
+});
 
 const username: string | null = localStorage.getItem('ms_username');
 const message: number = 2;
 
-const activeIndex2 = ref('1');
-const handleSelect = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
-}
 const sidebar = useSidebarStore();
 // 侧边栏折叠
 const collapseChage = () => {
@@ -99,6 +136,7 @@ const handleCommand = (command: string) => {
 	font-size: 22px;
 	color: #fff;
 }
+
 .collapse-btn {
 	display: flex;
 	justify-content: center;
@@ -108,35 +146,41 @@ const handleCommand = (command: string) => {
 	padding: 0 21px;
 	cursor: pointer;
 }
+
 .header .logo {
 	float: left;
-	width: 250px;
+	width: 300px;
 	line-height: 70px;
 }
+
 .header-left {
 	float: left;
-	padding-right: 250px;
 	line-height: 70px;
 }
+
 .header-right {
 	float: right;
 	padding-right: 50px;
 }
+
 .header-user-con {
 	display: flex;
 	height: 70px;
 	align-items: center;
 }
+
 .header-top-meun {
 	display: flex;
 	height: 70px;
 	align-items: center;
 }
+
 .btn-fullscreen {
 	transform: rotate(45deg);
 	margin-right: 5px;
 	font-size: 24px;
 }
+
 .btn-bell,
 .btn-fullscreen {
 	position: relative;
@@ -148,6 +192,7 @@ const handleCommand = (command: string) => {
 	display: flex;
 	align-items: center;
 }
+
 .btn-bell-badge {
 	position: absolute;
 	right: 4px;
@@ -158,21 +203,26 @@ const handleCommand = (command: string) => {
 	background: #f56c6c;
 	color: #fff;
 }
+
 .btn-bell .el-icon-lx-notice {
 	color: #fff;
 }
+
 .user-name {
 	margin-left: 10px;
 }
+
 .user-avator {
 	margin-left: 20px;
 }
+
 .el-dropdown-link {
 	color: #fff;
 	cursor: pointer;
 	display: flex;
 	align-items: center;
 }
+
 .el-dropdown-menu__item {
 	text-align: center;
 }

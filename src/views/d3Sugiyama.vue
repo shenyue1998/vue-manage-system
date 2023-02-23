@@ -1,13 +1,13 @@
 <template>
     <div class="container">
         <div class="sugiyama-chart-box">
-            <div class="content-title">全流程sugiyama</div>
+            <div class="content-title">全流程</div>
             <svg class="sugiyama-svg" id="svg01"></svg>
         </div>
-        <div class="layered-sugiyama-chart-box">
+        <!-- <div class="layered-sugiyama-chart-box">
             <div class="content-title">分层流程图</div>
             <svg class="sugiyama-svg" id="svg02"></svg>
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -18,7 +18,7 @@ import { fetchData } from '../api/index';
 import { customLayout } from '../utils/layout';
 
 (async () => {
-    const data = await fetchData('test').then(res => {
+    const data = await fetchData('test(10)').then(res => {
         return res.data
     });
 
@@ -37,7 +37,7 @@ import { customLayout } from '../utils/layout';
     console.log(left_dag);
     const left_layout = d3Dag
         .sugiyama() // base layout
-        .layering(customLayout())
+        // .layering(customLayout())   //自定义层级的sugiyama
         .decross(d3Dag.decrossOpt()) // minimize number of crossings
         .nodeSize((node) => [(node ? 5 : 0.25) * nodeRadius, 5 * nodeRadius]);
 
@@ -48,6 +48,7 @@ import { customLayout } from '../utils/layout';
     // --------------------------------
     // This code only handles rendering
     // --------------------------------
+
     const leftSvgSelection = d3.select("#svg01");
     leftSvgSelection.attr("viewBox", [20, 0, left_width, left_height].join(" "));
     const left_defs = leftSvgSelection.append("defs"); // For gradients
@@ -117,79 +118,6 @@ import { customLayout } from '../utils/layout';
         .attr("fill", "#767171")
         .attr("transform","translate(0,40)");
 
-    //右边流程图
-    const right_dag = d3Dag.dagStratify()(data.test02);
-    const right_layout = d3Dag
-        .sugiyama() // base layout
-        .decross(d3Dag.decrossOpt()) // minimize number of crossings
-        .nodeSize((node) => [(node ? 8 : 0.25) * nodeRadius, 8 * nodeRadius]); // set node size instead of constraining to fit
-    const right_width = right_layout(right_dag).width;
-    const right_height = right_layout(right_dag).height;
-    // --------------------------------
-    // This code only handles rendering
-    // --------------------------------
-    const rightSvgSelection = d3.select("#svg02");
-    rightSvgSelection.attr("viewBox", [0, 0, right_width, right_height].join(" "));
-    const right_defs = rightSvgSelection.append("defs"); // For gradients
-
-    // Plot edges
-    rightSvgSelection
-        .append("g")
-        .selectAll("path")
-        .data(right_dag.links())
-        .enter()
-        .append("path")
-        .attr("d", ({ points }) => line(points))
-        .attr("fill", "none")
-        .attr("stroke-width", 3)
-        .attr("stroke", ({ source, target }) => {
-            // encodeURIComponents for spaces, hope id doesn't have a `--` in it
-            const gradId = encodeURIComponent(`${source.data.id}--${target.data.id}`);
-            const grad = right_defs
-                .append("linearGradient")
-                .attr("id", gradId)
-                .attr("gradientUnits", "userSpaceOnUse")
-                .attr("x1", source.x)
-                .attr("x2", target.x)
-                .attr("y1", source.y)
-                .attr("y2", target.y);
-            grad
-                .append("stop")
-                .attr("offset", "0%")
-                .attr("stop-color", colorMap.get(source.data.type));
-            grad
-                .append("stop")
-                .attr("offset", "100%")
-                .attr("stop-color", colorMap.get(target.data.type));
-            return `url(#${gradId})`;
-        });
-
-    // Select nodes
-    const right_nodes = rightSvgSelection
-        .append("g")
-        .selectAll("g")
-        .data(right_dag.descendants())
-        .enter()
-        .append("g")
-        .attr("transform", ({ x, y }) => `translate(${x}, ${y})`);
-
-    // Plot node circles
-    right_nodes
-        .append("circle")
-        .attr("r", nodeRadius)
-        .attr("fill", (n) => colorMap.get(n.data.type));
-
-    // Add text to nodes
-    right_nodes
-        .append("text")
-        .text((d) => d.data.id)
-        .attr("font-weight", "normal")
-        .attr("font-family", "sans-serif")
-        .attr("text-anchor", "middle")
-        .attr("alignment-baseline", "middle")
-        .attr("fill", "#767171")
-        .attr("transform","translate(0,40)");
-
 })();
 
 </script>
@@ -198,7 +126,7 @@ import { customLayout } from '../utils/layout';
 .sugiyama-chart-box {
     display: inline-block;
     margin: 10px;
-    width: 900px;
+    width: 1500px;
     height: 600px;
 }
 
