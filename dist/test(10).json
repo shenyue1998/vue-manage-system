@@ -1,0 +1,251 @@
+{
+  "scm_test": [
+    {
+      "id": "0",
+      "name": "功能设计",
+      "parentIds": [],
+      "type": "a",
+      "rank": "1"
+    },
+    {
+      "id": "1",
+      "name": "参数设计",
+      "parentIds": [],
+      "type": "a",
+      "rank": "1"
+    },
+    {
+      "id": "2",
+      "name": "2D设计图",
+      "parentIds": [],
+      "type": "a",  
+      "rank": "1"
+    },
+    {
+      "id": "3",
+      "name": "3D设计图",
+      "parentIds": [],
+      "type": "a",
+      "rank": "1"
+    },  
+    {
+      "id": "4",
+      "name": "工艺建模",
+      "parentIds": [],
+      "type": "a",
+      "rank": "1"
+    },  
+    {
+      "id": "5",
+      "name": "物料特性",
+      "parentIds": [],
+      "type": "a",
+      "rank": "1"
+    },
+
+
+    {
+      "id": "6",
+      "name": "生产策略",
+      "parentIds": [
+        "1"
+      ],
+      "type": "b",
+      "rank": "2"
+    },
+    {
+      "id": "7",
+      "name": "产品检验",
+      "parentIds": [
+        "2",
+        "3",
+        "5"
+      ],
+      "type": "b",
+      "rank": "2"
+    },
+    {
+      "id": "8",
+      "name": "不良评审",
+      "parentIds": [
+        "1",
+        "4"
+      ],
+      "type": "b",
+      "rank": "2"
+    },
+    {
+      "id": "9",
+      "name": "过程检验",
+      "parentIds": [
+        "4"
+      ],
+      "type": "b",
+      "rank": "2"
+    },
+    {
+      "id": "10",
+      "name": "发料通知",
+      "parentIds": [
+        "4"
+      ],
+      "type": "b",
+      "rank": "2"
+    },
+    {
+      "id": "11",
+      "name": "能耗分析",
+      "parentIds": [
+        "4",
+        "5"
+      ],
+      "type": "b",
+      "rank": "2"
+    },
+
+
+
+    {
+      "id": "12",
+      "name": "人员管理",
+      "parentIds": [
+        "6"
+      ],
+      "type": "c",
+      "rank": "3"
+    },
+    {
+      "id": "13",
+      "name": "班组管理",
+      "parentIds": [
+        "6"
+      ],
+      "type": "c",
+      "rank": "3"
+    },
+    {
+      "id": "14",
+      "name": "班次管理",
+      "parentIds": [
+        "6",
+        "7"
+      ],
+      "type": "c",
+      "rank": "3"
+    },
+    {
+      "id": "15",
+      "name": "工作日历",
+      "parentIds": [
+        "6"
+      ],
+      "type": "c",
+      "rank": "3"
+    },
+    {
+      "id": "16",
+      "name": "产品管理",
+      "parentIds": [
+        "4",
+        "8"
+      ],
+      "type": "c",
+      "rank": "3"
+    },
+    {
+      "id": "17",
+      "name": "入库管理",
+      "parentIds": [
+        "10"
+      ],
+      "type": "c",
+      "rank": "3"
+    },
+    {
+      "id": "18",
+      "name": "库存管理",
+      "parentIds": [
+        "10"
+      ],
+      "type": "c",
+      "rank": "3"
+    },
+    {
+      "id": "19",
+      "name": "出库管理",
+      "parentIds": [
+        "10"
+      ],
+      "type": "c",
+      "rank": "3"
+    },
+    {
+      "id": "20",
+      "name": "不良管理",
+      "parentIds": [
+        "7",
+        "9"
+      ],
+      "type": "c",
+      "rank": "3"
+    },
+    {
+      "id": "21",
+      "name": "设备管理",
+      "parentIds": [
+        "11"
+      ],
+      "type": "c",
+      "rank": "3"
+    },
+
+
+
+    {
+      "id": "22",
+      "name": "销售订单",
+      "parentIds": [
+        "16"
+      ],
+      "type": "d",
+      "rank": "4"
+    },
+    {
+      "id": "23",
+      "name": "检验记录",
+      "parentIds": [
+        "21"
+      ],
+      "type": "d",
+      "rank": "4"
+    },
+    {
+      "id": "24",
+      "name": "客服记录",
+      "parentIds": [
+        "2",
+        "3"      ],
+      "type": "d",
+      "rank": "4"
+    },
+    {
+      "id": "25",
+      "name": "用户评论",
+      "parentIds": [
+        "0",
+        "1"
+      ],
+      "type": "d",
+      "rank": "4"
+    }
+  ],
+
+
+  "typelist":[
+    {
+      "a": "研发设计",
+      "b": "生产制造",
+      "c": "经营管理"
+    }
+  ]
+}
